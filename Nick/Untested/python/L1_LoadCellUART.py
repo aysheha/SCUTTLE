@@ -10,18 +10,20 @@ import rcpy
  
 UART.setup("UART1")
  
-def loadRead()
+def setup()
 	ser = serial.Serial(port = "/dev/ttyO1", baudrate=9600)
 	ser.close()
 	ser.open()
+def loadRead()
 	if ser.isOpen():
 		print "Serial is open!"
-   	 buff = ser.read()
-    	return buff
+   	 	buff = ser.read()
+    		return buff
 
 if __name__ == "__main__":
 	while True:
 		print("beginning Loadcell loop")
-    while rcpy.get_state() != rcpy.EXITING:
-				buff = loadRead(buff)
-        print(buff)
+		setup()
+ 		while rcpy.get_state() != rcpy.EXITING:
+			buff = loadRead(buff)
+        		print(buff)
