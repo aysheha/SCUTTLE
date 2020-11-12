@@ -37,7 +37,7 @@ def main():
   target_pixel = np.array([None, None, 0, None, None])
   band = 50
   
-  tc = 0
+  tc = 90
   tf = 6
   tp = 65
   
@@ -51,7 +51,7 @@ def main():
   motor_r = 2
   motor_l = 1
   found_obj = False;
-  rcpy.set_state(rcpy.RUNNING)
+  #rcpy.set_state(rcpy.RUNNING)
   
   while 1:
     # GET NEAREST OBJECT
@@ -107,18 +107,20 @@ def main():
         image = cam.newImage()
         height, width, channels = image.shape
         target_pixel = target.colorTarget()
-        x = int(target_pixel[0])
         radius = target_pixel[2]
      
-        if radius > 0:
+        if radius > 0 and target_pixel[0] is not None:
             found_obj = True
+            x = int(target_pixel[0])
             if x > ((width/2) - (band/2)) and x < ((width/2) + (band/2)):
                 # go to centered item
                 if radius >= tp:
                     duty = -1 *((radius-tp)/(tc-tp))
+                    print("slowly approach")
                 elif radius < tc:
                     duty = 1 - ((radius - tf)/(tp-tf)
                     duty = scale_d * duty
+                    print("approaching item")
                     
                 duty_r = duty
                 duty_l = duty
