@@ -1,0 +1,13 @@
+So for the final L3 that will put everything together, I was thinking about the exact steps 
+the robot needs to take in order to not bump into obstacles and center to get the nuts properly.  
+Here is my idea.  Let me know what you think.
+1) Begin and run Luke's General Pathing Code.
+2) Everytime the Scuttle turns to avoid an object, check to see if a bolt/nut is in view. 
+This is done using the L2_ColorTarget.py.  
+3a) If there is an object in view, try to center the robot.  
+    3b) Once centered, use L1_lidar.py to check if any obstacles are directly infront of the Scuttle.
+    L1_lidar gives multiple points that are within the 135 to -135 area.  We just need to check the 
+    area that is in front of the scuttle.
+        3c) If it find that there are no obstacles in the direct front, start moving forward to pick up.
+        3d) If there are obstacles, just continue with Luke's pathing.  
+4) If there is no object, just continue with luke's pathing code.  
