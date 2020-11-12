@@ -9,11 +9,11 @@ import numpy as np
 import L1_camera as cam
 
 width = 120                                                 # width of image being processed (pixels)
-color_range = np.array([[0, 0, 0], [255, 255, 255]])        # enter values here if running standalone program.
+color_range = np.array([[130, 95, 85], [180, 185, 185]])        # enter values here if running standalone program.
 
 
 # This function searches an image for an object of the specified color.  Returns array containing [x, y, radius] in pixels.
-def colorTarget(color_range=((0, 0, 0), (255, 255, 255))):
+def colorTarget(color_range=((130, 95, 85), (180, 185, 185))):
 
     image = cam.newImage()
     
