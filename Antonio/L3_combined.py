@@ -106,7 +106,7 @@ def main():
             
             image = cam.newImage()
             height, width, channels = image.shape
-            target_pixel = colorTarget()
+            target_pixel = target.colorTarget()
             x = int(target_pixel[0])
             radius = target_pixel[2]
       
